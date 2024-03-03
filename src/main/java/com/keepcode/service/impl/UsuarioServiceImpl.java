@@ -4,6 +4,7 @@ import java.util.Objects;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.keepcode.dto.UsuarioDTO;
 import com.keepcode.entity.Usuario;
@@ -17,10 +18,11 @@ import lombok.extern.slf4j.Slf4j;
  * Implementación del servicio de usuario
  */
 @Slf4j
+@Service
 public class UsuarioServiceImpl implements UsuarioService {
 
     /** UsuarioRepository */
-    @Autowired
+    @Autowired(required=false)
     private UsuarioRepository usuarioRepository;
 
     @Override
