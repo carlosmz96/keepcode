@@ -1,11 +1,11 @@
-package com.keepcode.mapper;
+package com.keepcode.models.mapper;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
-import com.keepcode.bean.UsuarioBean;
-import com.keepcode.dto.UsuarioDTO;
-import com.keepcode.entity.Usuario;
+import com.keepcode.models.bean.UsuarioBean;
+import com.keepcode.models.dto.UsuarioDTO;
+import com.keepcode.models.entity.Usuario;
 
 /**
  * Interfaz de mapeo de usuario

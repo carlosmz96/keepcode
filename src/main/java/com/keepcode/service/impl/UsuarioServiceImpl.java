@@ -6,9 +6,9 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.keepcode.dto.UsuarioDTO;
-import com.keepcode.entity.Usuario;
-import com.keepcode.mapper.UsuarioMapper;
+import com.keepcode.models.dto.UsuarioDTO;
+import com.keepcode.models.entity.Usuario;
+import com.keepcode.models.mapper.UsuarioMapper;
 import com.keepcode.repository.UsuarioRepository;
 import com.keepcode.service.UsuarioService;
 
@@ -40,6 +40,30 @@ public class UsuarioServiceImpl implements UsuarioService {
             }
         } else {
             log.info("UsuarioServiceImpl.obtenerUsuarioPorId() - El id viene nulo");
+            return null;
+        }
+    }
+
+    @Override
+    public UsuarioDTO registrarUsuario(UsuarioDTO usuarioDTO) {
+        log.info("UsuarioServiceImpl.registrarUsuario() - Inicio");
+        if (Objects.nonNull(usuarioDTO.getEmail())) {
+            final Optional<Usuario> optUsuario = usuarioRepository.findByEmail(usuarioDTO.getEmail());
+            if (!optUsuario.isPresent()) {
+                Usuario usuario = UsuarioMapper.INSTANCE.usuarioDTOToUsuario(usuarioDTO);
+                if (Objects.nonNull(usuario)) {
+                    usuario = usuarioRepository.save(usuario);
+                    return UsuarioMapper.INSTANCE.usuarioToUsuarioDTO(usuario);
+                } else {
+                    log.info("UsuarioServiceImpl.registrarUsuario() - Error desconocido");
+                    return null;
+                }
+            } else {
+                log.info("UsuarioServiceImpl.registrarUsuario() - Usuario con email ya existente");
+                return null;
+            }
+        } else {
+            log.info("UsuarioServiceImpl.registrarUsuario() - Email no válido");
             return null;
         }
     }
