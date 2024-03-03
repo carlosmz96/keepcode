@@ -24,10 +24,10 @@ import jakarta.servlet.http.HttpServletResponse;
 @Component
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
-    @Autowired
+    @Autowired(required = false)
     private JwtService jwtService;
 
-    @Autowired
+    @Autowired(required = false)
     private UserDetailsService userDetailsService;
 
     @SuppressWarnings("null")

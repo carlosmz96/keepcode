@@ -16,7 +16,7 @@ import com.keepcode.service.LoginService;
 public class LoginController {
 
     /** LoginService */
-    @Autowired
+    @Autowired(required = false)
     private LoginService loginService;
 
     @PostMapping(value = "login")
