@@ -1,5 +1,7 @@
 package com.keepcode.bean;
 
+import org.bson.types.ObjectId;
+
 import lombok.Data;
 
 /**
@@ -8,12 +10,19 @@ import lombok.Data;
 @Data
 public class UsuarioBean {
 
-    private Integer id;
+    /** ObjectId */
+    private ObjectId id;
 
+    /** Nombre */
     private String nombre;
 
-    private String dni;
+    /** Apellidos */
+    private String apellidos;
 
-    private Integer edad;
+    /** Email */
+    private String email;
+
+    /** Contraseña */
+    private String password;
 
 }
