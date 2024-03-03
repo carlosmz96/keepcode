@@ -2,7 +2,7 @@ package com.keepcode.service;
 
 import org.springframework.stereotype.Service;
 
-import com.keepcode.dto.UsuarioDTO;
+import com.keepcode.models.dto.UsuarioDTO;
 
 /**
  * Servicio de usuario
@@ -16,5 +16,12 @@ public interface UsuarioService {
      * @return UsuarioDTO
      */
     public UsuarioDTO obtenerUsuarioPorId(Integer id);
+
+    /**
+     * Registro de usuario
+     * @param usuarioDTO DTO de usuario
+     * @return UsuarioDTO
+     */
+    public UsuarioDTO registrarUsuario(UsuarioDTO usuarioDTO);
 
 }

@@ -1,13 +1,17 @@
-package com.keepcode.bean;
+package com.keepcode.models.bean;
 
 import org.bson.types.ObjectId;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * Bean de usuario
  */
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class UsuarioBean {
 
     /** ObjectId */
@@ -24,5 +28,8 @@ public class UsuarioBean {
 
     /** Contraseña */
     private String password;
+
+    /** Rol asociado */
+    private RolBean rol;
 
 }
