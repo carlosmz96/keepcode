@@ -2,6 +2,8 @@ package com.keepcode.models.bean;
 
 import org.bson.types.ObjectId;
 
+import com.keepcode.models.enums.Rol;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -30,6 +32,6 @@ public class UsuarioBean {
     private String password;
 
     /** Rol asociado */
-    private RolBean rol;
+    private Rol rol;
 
 }

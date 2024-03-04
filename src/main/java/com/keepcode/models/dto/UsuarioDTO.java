@@ -2,6 +2,8 @@ package com.keepcode.models.dto;
 
 import org.bson.types.ObjectId;
 
+import com.keepcode.models.enums.Rol;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -30,6 +32,6 @@ public class UsuarioDTO {
     private String password;
 
     /** Rol asociado */
-    private RolDTO rol;
+    private Rol rol;
 
 }

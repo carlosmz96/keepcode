@@ -22,7 +22,7 @@ import lombok.extern.slf4j.Slf4j;
 public class UsuarioServiceImpl implements UsuarioService {
 
     /** UsuarioRepository */
-    @Autowired(required=false)
+    @Autowired
     private UsuarioRepository usuarioRepository;
 
     @Override
@@ -40,30 +40,6 @@ public class UsuarioServiceImpl implements UsuarioService {
             }
         } else {
             log.info("UsuarioServiceImpl.obtenerUsuarioPorId() - El id viene nulo");
-            return null;
-        }
-    }
-
-    @Override
-    public UsuarioDTO registrarUsuario(UsuarioDTO usuarioDTO) {
-        log.info("UsuarioServiceImpl.registrarUsuario() - Inicio");
-        if (Objects.nonNull(usuarioDTO.getEmail())) {
-            final Optional<Usuario> optUsuario = usuarioRepository.findByEmail(usuarioDTO.getEmail());
-            if (!optUsuario.isPresent()) {
-                Usuario usuario = UsuarioMapper.INSTANCE.usuarioDTOToUsuario(usuarioDTO);
-                if (Objects.nonNull(usuario)) {
-                    usuario = usuarioRepository.save(usuario);
-                    return UsuarioMapper.INSTANCE.usuarioToUsuarioDTO(usuario);
-                } else {
-                    log.info("UsuarioServiceImpl.registrarUsuario() - Error desconocido");
-                    return null;
-                }
-            } else {
-                log.info("UsuarioServiceImpl.registrarUsuario() - Usuario con email ya existente");
-                return null;
-            }
-        } else {
-            log.info("UsuarioServiceImpl.registrarUsuario() - Email no válido");
             return null;
         }
     }

@@ -1,5 +1,6 @@
 package com.keepcode.config.security;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -15,8 +16,10 @@ import com.keepcode.config.jwt.JwtAuthenticationFilter;
 @EnableWebSecurity
 public class SecurityConfig {
 
+    @Autowired
     private JwtAuthenticationFilter jwtAuthenticationFilter;
 
+    @Autowired
     private AuthenticationProvider authProvider;
 
     @Bean
@@ -26,7 +29,7 @@ public class SecurityConfig {
                 csrf
                 .disable())
             .authorizeHttpRequests(authRequest ->
-            authRequest.requestMatchers("/auth/**").permitAll()
+                authRequest.requestMatchers("/auth/**").permitAll()
             .anyRequest().authenticated()
             )
         .sessionManagement(sessionManager -> 

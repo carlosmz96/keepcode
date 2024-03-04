@@ -18,7 +18,7 @@ import com.keepcode.repository.UsuarioRepository;
 public class AuthenticationConfig {
 
     /** UsuarioRepository */
-    @Autowired(required = false)
+    @Autowired
     private UsuarioRepository usuarioRepository;
 
     @Bean

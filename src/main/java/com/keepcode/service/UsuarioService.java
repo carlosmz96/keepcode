@@ -17,11 +17,4 @@ public interface UsuarioService {
      */
     public UsuarioDTO obtenerUsuarioPorId(Integer id);
 
-    /**
-     * Registro de usuario
-     * @param usuarioDTO DTO de usuario
-     * @return UsuarioDTO
-     */
-    public UsuarioDTO registrarUsuario(UsuarioDTO usuarioDTO);
-
 }

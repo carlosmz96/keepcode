@@ -10,6 +10,7 @@ import javax.crypto.SecretKey;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Service;
 
 import com.keepcode.service.JwtService;
 
@@ -23,6 +24,7 @@ import lombok.extern.slf4j.Slf4j;
  * Implementación del servicio de JWT
  */
 @Slf4j
+@Service
 public class JwtServiceImpl implements JwtService {
 
     @Value("${jwt.token.secret}")
