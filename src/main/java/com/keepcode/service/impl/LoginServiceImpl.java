@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.keepcode.models.dto.UsuarioDTO;
@@ -35,6 +36,9 @@ public class LoginServiceImpl implements LoginService {
     @Autowired
     private JwtService jwtService;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     @Override
     public AuthResponse login(LoginRequest request) {
         log.info("LoginServiceImpl.login() - Inicio");
@@ -51,7 +55,7 @@ public class LoginServiceImpl implements LoginService {
                 .nombre(usuarioDto.getNombre())
                 .apellidos(usuarioDto.getApellidos())
                 .email(usuarioDto.getEmail())
-                .password(usuarioDto.getPassword())
+                .password(passwordEncoder.encode(usuarioDto.getPassword()))
                 .rol(Rol.USER)
                 .build();
 

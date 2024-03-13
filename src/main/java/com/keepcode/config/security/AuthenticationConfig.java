@@ -14,7 +14,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.keepcode.repository.UsuarioRepository;
 
+import lombok.RequiredArgsConstructor;
+
 @Configuration
+@RequiredArgsConstructor
 public class AuthenticationConfig {
 
     /** UsuarioRepository */
