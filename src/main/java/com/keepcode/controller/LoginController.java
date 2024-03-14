@@ -18,7 +18,7 @@ import com.keepcode.service.LoginService;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping("/auth")
+@RequestMapping("/api/auth")
 public class LoginController {
 
     /** LoginService */
