@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.keepcode.models.bean.UsuarioBean;
@@ -15,10 +16,13 @@ import com.keepcode.models.entity.LoginRequest;
 import com.keepcode.models.mapper.UsuarioMapper;
 import com.keepcode.service.LoginService;
 
-
+/**
+ * Controlador de autenticación
+ */
 @RestController
-@CrossOrigin(origins = "*")
 @RequestMapping("/api/auth")
+@CrossOrigin(origins = "*", exposedHeaders = { "content-range" }, methods = { RequestMethod.GET, RequestMethod.POST,
+    RequestMethod.PUT, RequestMethod.DELETE, RequestMethod.OPTIONS, RequestMethod.PATCH })
 public class LoginController {
 
     /** LoginService */

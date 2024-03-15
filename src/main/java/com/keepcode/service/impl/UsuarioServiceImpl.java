@@ -3,6 +3,7 @@ package com.keepcode.service.impl;
 import java.util.Objects;
 import java.util.Optional;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,20 +27,20 @@ public class UsuarioServiceImpl implements UsuarioService {
     private UsuarioRepository usuarioRepository;
 
     @Override
-    public UsuarioDTO obtenerUsuarioPorId(Integer id) {
-        log.info("UsuarioServiceImpl.obtenerUsuarioPorId() - Inicio");
-        if (Objects.nonNull(id)) {
-            final Optional<Usuario> optUsuario = this.usuarioRepository.findById(id);
+    public UsuarioDTO obtenerUsuarioPorEmail(String email) {
+        log.info("UsuarioServiceImpl.obtenerUsuarioPorEmail() - Inicio");
+        if (Objects.nonNull(email) && StringUtils.isNotBlank(email)) {
+            final Optional<Usuario> optUsuario = this.usuarioRepository.findByEmail(email);
             if (optUsuario.isPresent()) {
                 final Usuario usuario = optUsuario.get();
-                log.info("UsuarioServiceImpl.obtenerUsuarioPorId() - Fin");
+                log.info("UsuarioServiceImpl.obtenerUsuarioPorEmail() - Fin");
                 return UsuarioMapper.INSTANCE.usuarioToUsuarioDTO(usuario);
             } else {
-                log.info("UsuarioServiceImpl.obtenerUsuarioPorId() - El usuario no existe");
+                log.info("UsuarioServiceImpl.obtenerUsuarioPorEmail() - El usuario no existe");
                 return null;
             }
         } else {
-            log.info("UsuarioServiceImpl.obtenerUsuarioPorId() - El id viene nulo");
+            log.info("UsuarioServiceImpl.obtenerUsuarioPorEmail() - El email viene nulo o vacío");
             return null;
         }
     }

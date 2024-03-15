@@ -11,10 +11,10 @@ import com.keepcode.models.dto.UsuarioDTO;
 public interface UsuarioService {
 
     /**
-     * Obtención de usuario por id
-     * @param id Identificador de usuario
+     * Obtención de usuario por email
+     * @param email Email de usuario
      * @return UsuarioDTO
      */
-    public UsuarioDTO obtenerUsuarioPorId(Integer id);
+    public UsuarioDTO obtenerUsuarioPorEmail(String email);
 
 }
